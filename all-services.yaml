@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: home-service
-        image: us-central1-docker.pkg.dev/qwiklabs-gcp-04-5423b2a272c8/my-microservices/home-service:latest
+        image: asia-south1-docker.pkg.dev/qwiklabs-gcp-02-cbbeb1aab496/my-repo/home-service:latest
         ports:
         - containerPort: 8080
 ---
@@ -54,7 +54,7 @@ spec:
     spec:
       containers:
       - name: about-service
-        image: us-central1-docker.pkg.dev/qwiklabs-gcp-04-5423b2a272c8/my-microservices/about-service:latest
+        image: asia-south1-docker.pkg.dev/qwiklabs-gcp-02-cbbeb1aab496/my-repo/about-service:latest
         ports:
         - containerPort: 8080
 ---
@@ -91,7 +91,7 @@ spec:
     spec:
       containers:
       - name: contact-service
-        image: us-central1-docker.pkg.dev/qwiklabs-gcp-04-5423b2a272c8/my-microservices/contact-service:latest
+        image: asia-south1-docker.pkg.dev/qwiklabs-gcp-02-cbbeb1aab496/my-repo/contact-service:latest
         ports:
         - containerPort: 8080
 ---
@@ -128,7 +128,7 @@ spec:
     spec:
       containers:
       - name: shop-service
-        image: us-central1-docker.pkg.dev/qwiklabs-gcp-04-5423b2a272c8/my-microservices/shop-service:latest
+        image: asia-south1-docker.pkg.dev/qwiklabs-gcp-02-cbbeb1aab496/my-repo/shop-service:latest
         ports:
         - containerPort: 8080
 ---
@@ -153,8 +153,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: main-ingress
+  annotations:
+    kubernetes.io/ingress.class: "gce"
 spec:
-  ingressClassName: gce
   rules:
   - http:
       paths:
