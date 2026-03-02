@@ -17,9 +17,20 @@ spec:
     spec:
       containers:
       - name: home-service
-        image: asia-south1-docker.pkg.dev/qwiklabs-gcp-02-cbbeb1aab496/my-repo/home-service:latest
+        image: asia-south1-docker.pkg.dev/qwiklabs-gcp-04-88cc01b8252e/my-repo/home-service:latest
         ports:
         - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        resources:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 500m
 ---
 apiVersion: v1
 kind: Service
@@ -54,9 +65,15 @@ spec:
     spec:
       containers:
       - name: about-service
-        image: asia-south1-docker.pkg.dev/qwiklabs-gcp-02-cbbeb1aab496/my-repo/about-service:latest
+        image: asia-south1-docker.pkg.dev/qwiklabs-gcp-04-88cc01b8252e/my-repo/about-service:latest
         ports:
         - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
 ---
 apiVersion: v1
 kind: Service
@@ -73,7 +90,7 @@ spec:
 
 # ===========================
 # Contact Service
-# ===========================
+# =========================== 
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -91,9 +108,15 @@ spec:
     spec:
       containers:
       - name: contact-service
-        image: asia-south1-docker.pkg.dev/qwiklabs-gcp-02-cbbeb1aab496/my-repo/contact-service:latest
+        image: asia-south1-docker.pkg.dev/qwiklabs-gcp-04-88cc01b8252e/my-repo/contact-service:latest
         ports:
         - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
 ---
 apiVersion: v1
 kind: Service
@@ -128,9 +151,15 @@ spec:
     spec:
       containers:
       - name: shop-service
-        image: asia-south1-docker.pkg.dev/qwiklabs-gcp-02-cbbeb1aab496/my-repo/shop-service:latest
+        image: asia-south1-docker.pkg.dev/qwiklabs-gcp-04-88cc01b8252e/my-repo/shop-service:latest
         ports:
         - containerPort: 8080
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
 ---
 apiVersion: v1
 kind: Service
